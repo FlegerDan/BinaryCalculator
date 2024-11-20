@@ -48,6 +48,14 @@ int main()
 			and2numbers();
 			system("pause");
 			break;
+		case 2:
+			or2numbers();
+			system("pause");
+			break;
+		case 3:
+			xor2numbers();
+			system("pause");
+			break;
 		}
 		system("cls");
 	}
@@ -188,11 +196,141 @@ void and2numbers()
 }
 void or2numbers()
 {
+	char* number1;
+	char* number2;
+	char* result;
+	int length_number1 = 0;
+	int length_number2 = 0;
+	string_allocation(&number1, 32);
+	string_allocation(&number2, 32);
+	string_allocation(&result, 32);
+	write_binary_string(number1, false);
+	write_binary_string(number2, true);
 
+	length_number1 = size_binary_string(number1) - 1;
+	length_number2 = size_binary_string(number2) - 1;
+
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number1 >= 0)
+		{
+			number1[i] = number1[length_number1];
+			length_number1--;
+		}
+		else
+		{
+			number1[i] = '0';
+		}
+
+		if (length_number2 >= 0)
+		{
+			number2[i] = number2[length_number2];
+			length_number2--;
+		}
+		else
+		{
+			number2[i] = '0';
+		}
+	}
+	number1[32] = '\0';
+	number2[32] = '\0';
+
+	for (int i = 0; i < 32; i++)
+	{
+		if (number1[i] == '0' && number2[i] == '0')
+		{
+			result[i] = '0';
+		}
+		if (number1[i] == '1' && number2[i] == '0')
+		{
+			result[i] = '1';
+		}
+		if (number1[i] == '0' && number2[i] == '1')
+		{
+			result[i] = '1';
+		}
+		if (number1[i] == '1' && number2[i] == '1')
+		{
+			result[i] = '1';
+		}
+	}
+
+	printf("the result of ");
+	print_binary_string(number1);
+	printf(" in or with ");
+	print_binary_string(number2);
+	printf(" is ");
+	print_binary_string(result);
+	printf("\n");
 }
 void xor2numbers()
 {
+	char* number1;
+	char* number2;
+	char* result;
+	int length_number1 = 0;
+	int length_number2 = 0;
+	string_allocation(&number1, 32);
+	string_allocation(&number2, 32);
+	string_allocation(&result, 32);
+	write_binary_string(number1, false);
+	write_binary_string(number2, true);
 
+	length_number1 = size_binary_string(number1) - 1;
+	length_number2 = size_binary_string(number2) - 1;
+
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number1 >= 0)
+		{
+			number1[i] = number1[length_number1];
+			length_number1--;
+		}
+		else
+		{
+			number1[i] = '0';
+		}
+
+		if (length_number2 >= 0)
+		{
+			number2[i] = number2[length_number2];
+			length_number2--;
+		}
+		else
+		{
+			number2[i] = '0';
+		}
+	}
+	number1[32] = '\0';
+	number2[32] = '\0';
+
+	for (int i = 0; i < 32; i++)
+	{
+		if (number1[i] == '0' && number2[i] == '0')
+		{
+			result[i] = '0';
+		}
+		if (number1[i] == '1' && number2[i] == '0')
+		{
+			result[i] = '1';
+		}
+		if (number1[i] == '0' && number2[i] == '1')
+		{
+			result[i] = '1';
+		}
+		if (number1[i] == '1' && number2[i] == '1')
+		{
+			result[i] = '0';
+		}
+	}
+
+	printf("the result of ");
+	print_binary_string(number1);
+	printf(" in xor with ");
+	print_binary_string(number2);
+	printf(" is ");
+	print_binary_string(result);
+	printf("\n");
 }
 void complement1st()
 {
