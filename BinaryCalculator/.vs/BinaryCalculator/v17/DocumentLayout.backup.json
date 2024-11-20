@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programare\\C\\BinaryCalculator\\BinaryCalculator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FBDA5DB3-A513-45F1-AB29-0A2C15C97A8E}|BinaryCalculator\\BinaryCalculator.vcxproj|D:\\Programare\\C\\BinaryCalculator\\BinaryCalculator\\BinaryCalculator\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FBDA5DB3-A513-45F1-AB29-0A2C15C97A8E}|BinaryCalculator\\BinaryCalculator.vcxproj|solutionrelative:BinaryCalculator\\FileName.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.cpp",
+              "DocumentMoniker": "D:\\Programare\\C\\BinaryCalculator\\BinaryCalculator\\BinaryCalculator\\FileName.cpp",
+              "RelativeDocumentMoniker": "BinaryCalculator\\FileName.cpp",
+              "ToolTip": "D:\\Programare\\C\\BinaryCalculator\\BinaryCalculator\\BinaryCalculator\\FileName.cpp",
+              "RelativeToolTip": "BinaryCalculator\\FileName.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-20T17:00:28.671Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
