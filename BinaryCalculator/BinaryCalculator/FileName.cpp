@@ -62,6 +62,14 @@ int main()
 			ones_complement();
 			system("pause");
 			break;
+		case 5:
+			second_complement();
+			system("pause");
+			break;
+		case 6:
+			set_bit();
+			system("pause");
+			break;
 		}
 		system("cls");
 	}
@@ -428,17 +436,86 @@ void ones_complement()
 		}
 	}
 	print_binary_string(number);
-	printf("\n");
+	printf("\n yep I did both \n");
 	free(number);
 
 }
 void second_complement()
 {
-
+	char* number;
+	int length_number = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
+	printf("\n so two's complement, well if the number is positive the two's complement is the positive number and for negative number well we have to calculate\n");
+	printf("\n for a 32 bits we will consider the following format: 1 sign bit|the rest of them will be the value, so basically the first bit is the sign bit so for positive you will have to write like this:0101\n");
+	if (number[0] == '0')
+	{
+		printf("the result:");
+		print_binary_string(number);
+	}
+	else
+	{
+		for (int i = 1; i <= length_number; i++)
+		{
+			if (number[i] == '1')
+			{
+				number[i] = '0';
+			}
+			else
+			{
+				number[i] = '1';
+			}
+		}
+		char overload = '0';
+		for (int i = length_number; i >= 1; i--)
+		{
+			if (i == length_number)
+			{
+				overload = number[i] + 1; // that means you will make '1' or '2' 
+				if (overload == '2')
+				{
+					overload = '1';
+					number[i] = '0';
+				}
+				else
+				{
+					overload = '0';
+					number[i] = '1';
+				}
+			}
+			else
+			{
+				
+				if (overload == '1')
+				{
+					overload = number[i] + (overload - 48);
+					if (overload == '2')
+					{
+						overload = '1';
+						number[i] = '0';
+					}
+					else
+					{
+						overload = '0';
+						number[i] = '1';
+					}
+				}
+			}
+		}
+		printf("the result:");
+		print_binary_string(number);
+	}
+	printf("\n");
+	free(number);
 }
 void set_bit()
 {
-
+	char* number;
+	int length_number = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
 }
 void clear_bit()
 {
