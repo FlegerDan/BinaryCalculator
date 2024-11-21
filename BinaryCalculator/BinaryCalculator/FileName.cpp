@@ -2,7 +2,8 @@
 // Author: Fleger Dan
 // notes in case you have problems with scanf you have to properties->C/C++->General->SDL Check switch to no sdl checks No (/sdl-)
 
-
+/*** to do: check for more bugs that means testing manually or automatically*/
+/*** to do: check if you can implement more operations like add, sub and so on */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +23,8 @@ void second_complement();
 void set_bit();
 void clear_bit();
 void toggle_bit();
+void shift_left();
+void shift_right();
 
 int main()
 {
@@ -38,8 +41,8 @@ int main()
 		printf("6. set a bit for a number\n");
 		printf("7. clear a bit for a number\n");
 		printf("8. toggle a bit for a number\n");
-		printf("9. shifting a number to the left by n bits\n");
-		printf("10. shifting a number to the right by n bits\n");
+		printf("9. shifting a number to the left by n bits (logic shifting)\n");
+		printf("10. shifting a number to the right by n bits (logic shifting)\n");
 		printf("0: exit\n");
 		printf("YourInput:");
 
@@ -68,6 +71,22 @@ int main()
 			break;
 		case 6:
 			set_bit();
+			system("pause");
+			break;
+		case 7:
+			clear_bit();
+			system("pause");
+			break;
+		case 8:
+			toggle_bit();
+			system("pause");
+			break;
+		case 9:
+			shift_left();
+			system("pause");
+			break;
+		case 10:
+			shift_right();
 			system("pause");
 			break;
 		}
@@ -513,15 +532,209 @@ void set_bit()
 {
 	char* number;
 	int length_number = 0;
+	int n_bit = 0;
 	string_allocation(&number, 33);
 	write_binary_string(number);
 	length_number = size_binary_string(number) - 1;
+	// so normally to set the n bit is (number | (1<<n))
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number >= 0)
+		{
+			number[i] = number[length_number];
+			length_number--;
+		}
+		else
+		{
+			number[i] = '0';
+		}
+	}
+	number[32] = '\0';
+	
+	do
+	{
+		system("cls");
+		printf("another important thing if you write let's say 0, like you want to set the bit 0 the array is basically left to right, so I will consider 0 as 31\n");
+		printf("please insert a number between 0 and 31, is to decide which bit to set:");
+		scanf("%d", &n_bit);
+	} while (n_bit > 31);
+	printf("the number before the operation:");
+	print_binary_string(number);
+	n_bit = 31 - n_bit;
+	number[n_bit] = '1';
+	printf("\nand the result:");
+	print_binary_string(number);
+	printf("\n");
+	free(number);
 }
 void clear_bit()
 {
+	char* number;
+	int length_number = 0;
+	int n_bit = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
+	// so normally to clear the n bit is (number & ~(1<<n))
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number >= 0)
+		{
+			number[i] = number[length_number];
+			length_number--;
+		}
+		else
+		{
+			number[i] = '0';
+		}
+	}
+	number[32] = '\0';
 
+	do
+	{
+		system("cls");
+		printf("another important thing if you write let's say 0, like you want to clear the bit 0 the array is basically left to right, so I will consider 0 as 31\n");
+		printf("please insert a number between 0 and 31, is to decide which bit to clear:");
+		scanf("%d", &n_bit);
+	} while (n_bit > 31);
+	printf("the number before the operation:");
+	print_binary_string(number);
+	n_bit = 31 - n_bit;
+	number[n_bit] = '0';
+	printf("\nand the result:");
+	print_binary_string(number);
+	printf("\n");
+	free(number);
 }
 void toggle_bit()
 {
+	char* number;
+	int length_number = 0;
+	int n_bit = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
+	// so normally to toggle the n bit is (number ^ (1<<n))
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number >= 0)
+		{
+			number[i] = number[length_number];
+			length_number--;
+		}
+		else
+		{
+			number[i] = '0';
+		}
+	}
+	number[32] = '\0';
 
+	do
+	{
+		system("cls");
+		printf("another important thing if you write let's say 0, like you want to toggle the bit 0 the array is basically left to right, so I will consider 0 as 31\n");
+		printf("please insert a number between 0 and 31, is to decide which bit to toggle:");
+		scanf("%d", &n_bit);
+	} while (n_bit > 31);
+	printf("the number before the operation:");
+	print_binary_string(number);
+	n_bit = 31 - n_bit;
+	if (number[n_bit] == '0')
+	{
+		number[n_bit] = '1';
+	}
+	else
+	{
+		number[n_bit] = '0';
+	}
+	printf("\nand the result:");
+	print_binary_string(number);
+	printf("\n");
+	free(number);
+}
+void shift_left()
+{
+	char* number;
+	int length_number = 0;
+	int n_bit = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
+	// normally the shifting is number<<k_pos or >> 
+	do
+	{
+		system("cls");
+		printf("please insert a number between 0 and 31, is to decide with how many bits to shift:");
+		scanf("%d", &n_bit);
+	} while (n_bit > 31);
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number >= 0)
+		{
+			number[i] = number[length_number];
+			length_number--;
+		}
+		else
+		{
+			number[i] = '0';
+		}
+	}
+	number[32] = '\0';
+	printf("the number before shifting:");
+	print_binary_string(number);
+	for (int i = 0; i < n_bit; i++)
+	{
+		for (int i = 1; i < 32; i++)
+		{
+			number[i - 1] = number[i];
+		}
+		number[31] = '0';
+	}
+	printf("\nand the result:");
+	print_binary_string(number);
+	printf("\n");
+	free(number);
+}
+void shift_right()
+{
+	char* number;
+	int length_number = 0;
+	int n_bit = 0;
+	string_allocation(&number, 33);
+	write_binary_string(number);
+	length_number = size_binary_string(number) - 1;
+	// normally the shifting is number<<k_pos or >> 
+	do
+	{
+		system("cls");
+		printf("please insert a number between 0 and 31, is to decide with how many bits to shift:");
+		scanf("%d", &n_bit);
+	} while (n_bit > 31);
+	for (int i = 31; i >= 0; i--)
+	{
+		if (length_number >= 0)
+		{
+			number[i] = number[length_number];
+			length_number--;
+		}
+		else
+		{
+			number[i] = '0';
+		}
+	}
+	number[32] = '\0';
+	printf("the number before shifting:");
+	print_binary_string(number);
+	for (int i = 0; i < n_bit; i++)
+	{
+		for (int i = 30; i >=0; i--)
+		{
+			number[i + 1] = number[i];
+		}
+		number[0] = '0';
+	}
+	printf("\nand the result:");
+	print_binary_string(number);
+	printf("\n");
+	free(number);
 }
